@@ -216,3 +216,4 @@ function syncPendingPlans() {
         showToast(syncedCount + " plan(s) uploaded successfully!");
     }
 }
+print("Script loaded successfully.");
