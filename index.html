@@ -1,123 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEMMate Namibia</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d5c63" />
+  <meta name="description" content="Offline-first STEM session planner for Namibian facilitators" />
+  <title>STEMMate Namibia</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<div class="phone-frame">
-    
-    <!-- Top Header -->
-    <div class="header">
-        <span>STEMMate Namibia</span>
-        <span id="network-status-text">Online</span>
+<!-- ============ HEADER ============ -->
+<header class="app-header">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">S</div>
+    <div>
+      <h1>STEMMate <span>Namibia</span></h1>
+      <p class="tagline" data-i18n="tagline">Plan STEM sessions, even offline</p>
     </div>
-    
-    <!-- Clickable Offline Banner -->
-    <div id="offline-banner" onclick="toggleOfflineMode()">
-        <strong>Online</strong><br>
-        <small>Tap here to turn off internet.</small>
+  </div>
+  <div class="header-actions">
+    <button id="lang-toggle" class="icon-btn" title="Language" aria-label="Toggle language">EN</button>
+    <div id="net-pill" class="net-pill online">
+      <span class="dot"></span><span id="net-label">Online</span>
     </div>
+  </div>
+</header>
 
-    <!-- 1. HOME SCREEN -->
-    <div id="screen-home" class="content screen active-screen">
-        <h2>Hello, Teacher</h2>
-        <p class="subtitle">What do you want to do today?</p>
-        
-        <div class="card" onclick="showScreen('screen-activities')">
-            <strong>1. Browse activities</strong><br>
-            <small>Find a lesson for your class</small>
-        </div>
-        
-        <div class="card" onclick="showScreen('screen-create-plan')">
-            <strong>2. Create a plan</strong><br>
-            <small>Start a new lesson plan</small>
-        </div>
-        
-        <div class="card" onclick="showScreen('screen-saved')">
-            <strong>3. View saved plans</strong><br>
-            <small>See your saved work</small>
-        </div>
-    </div>
+<!-- ============ PROGRESS ============ -->
+<nav class="progress" aria-label="Progress">
+  <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+  <ol class="steps">
+    <li class="step active" data-step="1">
+      <span class="step-num">1</span>
+      <span class="step-label" data-i18n="step.browse">Browse</span>
+    </li>
+    <li class="step" data-step="2">
+      <span class="step-num">2</span>
+      <span class="step-label" data-i18n="step.plan">Plan</span>
+    </li>
+    <li class="step" data-step="3">
+      <span class="step-num">3</span>
+      <span class="step-label" data-i18n="step.saved">Saved</span>
+    </li>
+  </ol>
+</nav>
 
-    <!-- 2. BROWSE ACTIVITIES SCREEN -->
-    <div id="screen-activities" class="content screen">
-        <h2>Activities</h2>
-        <p class="subtitle">Pick a lesson to teach.</p>
-        
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterActivities('All')">All</button>
-            <button class="filter-btn" onclick="filterActivities('Beginner')">Beginner</button>
-            <button class="filter-btn" onclick="filterActivities('Intermediate')">Intermediate</button>
-            <button class="filter-btn" onclick="filterActivities('Advance')">Advance</button>
-        </div>
-        
-        <div id="activity-list">
-            <!-- JavaScript will put the activities here -->
-        </div>
-    </div>
+<main>
 
-    <!-- 3. CREATE PLAN SCREEN -->
-    <div id="screen-create-plan" class="content screen">
-        <h2>New Lesson Plan</h2>
-        <p class="subtitle" style="color: #666;">This saves automatically.</p>
-        
-        <div class="form-group">
-            <label for="plan-title">1. Title</label>
-            <input type="text" id="plan-title" placeholder="Name of the lesson">
-        </div>
+  <!-- ============ STEP 1: BROWSE ============ -->
+  <section id="step-1" class="panel active" aria-labelledby="h-browse">
+    <header class="panel-head">
+      <div>
+        <h2 id="h-browse" data-i18n="browse.title">Browse activities</h2>
+        <p class="sub" data-i18n="browse.sub">Pick a hands-on STEM activity for your group</p>
+      </div>
+    </header>
 
-        <div class="form-group">
-            <label for="plan-steps">2. Steps</label>
-            <input type="text" id="plan-steps" placeholder="What will the students do?">
-        </div>
-
-        <div class="form-group">
-            <label for="plan-timing">3. Time Needed</label>
-            <input type="text" id="plan-timing" placeholder="How many minutes?">
-        </div>
-
-        <div class="form-group">
-            <label for="plan-materials">4. Materials</label>
-            <input type="text" id="plan-materials" placeholder="What items do you need?">
-        </div>
-
-        <div class="form-group">
-            <label for="plan-safety">5. Safety</label>
-            <input type="text" id="plan-safety" placeholder="Any safety rules?">
-        </div>
-
-        <div class="form-group">
-            <label for="plan-inclusion">6. Inclusion</label>
-            <input type="text" id="plan-inclusion" placeholder="How to include all students">
-        </div>
-        
-        <button class="btn btn-primary" onclick="savePlan()">Save Plan</button>
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 110-16 8 8 0 010 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="search" type="search" placeholder="Search by title or material…" aria-label="Search activities" />
+      </div>
+      <div class="filter-row">
+        <select id="filter-subject" aria-label="Subject"><option value="">All subjects</option></select>
+        <select id="filter-age" aria-label="Age"><option value="">All ages</option></select>
+        <select id="filter-duration" aria-label="Duration">
+          <option value="">Any length</option>
+          <option value="short">≤ 45 min</option>
+          <option value="medium">45 – 75 min</option>
+          <option value="long">75+ min</option>
+        </select>
+      </div>
+      <div id="filter-chips" class="chips" aria-live="polite"></div>
     </div>
 
-    <!-- 4. SAVED PLANS SCREEN -->
-    <div id="screen-saved" class="content screen">
-        <h2>My Plans</h2>
-        <p class="subtitle">Check if your plans are uploaded.</p>
-        
-        <div id="saved-plans-list">
-            <!-- JavaScript will put the saved plans here -->
+    <div id="activity-count" class="result-count"></div>
+    <ul id="activity-list" class="activity-grid"></ul>
+    <div id="no-activities" class="empty-state" hidden>
+      <div class="empty-icon">🔍</div>
+      <p>No activities match your filters.</p>
+      <button type="button" class="link-btn" id="clear-filters">Clear filters</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2: PLAN ============ -->
+  <section id="step-2" class="panel" aria-labelledby="h-plan">
+    <header class="panel-head">
+      <div>
+        <h2 id="h-plan" data-i18n="plan.title">New session plan</h2>
+        <p class="sub" data-i18n="plan.sub">Draft a plan with safety and inclusion checks</p>
+      </div>
+      <span id="draft-pill" class="draft-pill" hidden>Draft</span>
+    </header>
+
+    <div id="template-picker" class="templates">
+      <p class="templates-label">Quick start:</p>
+      <button type="button" class="template-btn" data-template="outreach">30-min outreach</button>
+      <button type="button" class="template-btn" data-template="workshop">2-hour workshop</button>
+      <button type="button" class="template-btn" data-template="club">After-school club</button>
+    </div>
+
+    <form id="plan-form" novalidate>
+      <div class="field">
+        <label for="plan-activity" data-i18n="plan.activity">Activity</label>
+        <select id="plan-activity" required></select>
+        <small class="field-error" data-for="plan-activity"></small>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="plan-date" data-i18n="plan.date">Date</label>
+          <input id="plan-date" type="date" required />
+          <small class="field-error" data-for="plan-date"></small>
         </div>
+        <div class="field">
+          <label for="plan-time" data-i18n="plan.time">Start time</label>
+          <input id="plan-time" type="time" value="09:00" />
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="field">
+          <label for="plan-duration" data-i18n="plan.duration">Duration (min)</label>
+          <input id="plan-duration" type="number" min="15" step="15" value="60" required />
+          <small class="field-error" data-for="plan-duration"></small>
+        </div>
+        <div class="field">
+          <label for="plan-group" data-i18n="plan.group">Group size</label>
+          <input id="plan-group" type="number" min="1" max="200" value="10" required />
+          <small class="field-error" data-for="plan-group"></small>
+        </div>
+        <div class="field">
+          <label for="plan-facilitator" data-i18n="plan.facilitator">Facilitator</label>
+          <input id="plan-facilitator" type="text" placeholder="Your name" required />
+          <small class="field-error" data-for="plan-facilitator"></small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="plan-location" data-i18n="plan.location">Location (optional)</label>
+        <input id="plan-location" type="text" placeholder="School, community hall…" />
+      </div>
+
+      <div class="checks-grid">
+        <fieldset class="checks safety">
+          <legend>🛡️ <span data-i18n="plan.safety">Safety</span></legend>
+          <label><input type="checkbox" data-check="safety" value="materials" /> Materials checked</label>
+          <label><input type="checkbox" data-check="safety" value="space" /> Space is safe</label>
+          <label><input type="checkbox" data-check="safety" value="firstaid" /> First-aid kit present</label>
+          <label><input type="checkbox" data-check="safety" value="supervision" /> Adequate supervision</label>
+        </fieldset>
+
+        <fieldset class="checks inclusion">
+          <legend>🤝 <span data-i18n="plan.inclusion">Inclusion</span></legend>
+          <label><input type="checkbox" data-check="inclusion" value="language" /> Language needs met</label>
+          <label><input type="checkbox" data-check="inclusion" value="access" /> Access needs met</label>
+          <label><input type="checkbox" data-check="inclusion" value="gender" /> Gender-balanced groups</label>
+          <label><input type="checkbox" data-check="inclusion" value="materials_shared" /> Materials shared fairly</label>
+        </fieldset>
+      </div>
+
+      <div class="field">
+        <label for="plan-notes" data-i18n="plan.notes">Notes</label>
+        <textarea id="plan-notes" rows="3" placeholder="Anything to remember for next time…"></textarea>
+      </div>
+
+      <div class="actions sticky">
+        <span id="autosave-hint" class="hint">Autosaves every 30s</span>
+        <div class="actions-right">
+          <button type="button" id="reset-form" class="ghost" data-i18n="plan.clear">Clear</button>
+          <button type="submit" class="primary" data-i18n="plan.save">Save plan</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <!-- ============ STEP 3: SAVED ============ -->
+  <section id="step-3" class="panel" aria-labelledby="h-saved">
+    <header class="panel-head">
+      <div>
+        <h2 id="h-saved" data-i18n="saved.title">Saved plans</h2>
+        <p class="sub" data-i18n="saved.sub">Your session plans, synced or waiting</p>
+      </div>
+      <button type="button" id="new-plan-btn" class="primary small">+ New plan</button>
+    </header>
+
+    <div id="sync-summary" class="sync-summary"></div>
+
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 110-16 8 8 0 010 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="plan-search" type="search" placeholder="Search saved plans…" />
+      </div>
+      <div class="filter-row">
+        <select id="filter-status" aria-label="Status">
+          <option value="">All statuses</option>
+          <option value="synced">Synced</option>
+          <option value="pending">Pending</option>
+          <option value="conflict">Conflict</option>
+        </select>
+      </div>
     </div>
 
-    <!-- Friendly Toast Notification (Hidden by default) -->
-    <div id="toast-message" class="toast">Action successful!</div>
-
-    <!-- Bottom Navigation Bar -->
-    <div class="nav-bar" id="bottom-nav">
-        <button class="nav-btn" onclick="showScreen('screen-home')">Home</button>
-        <button class="nav-btn" onclick="showScreen('screen-activities')">Activities</button>
-        <button class="nav-btn" onclick="showScreen('screen-saved')">Plans</button>
+    <ul id="plan-list" class="plan-list"></ul>
+    <div id="no-plans" class="empty-state" hidden>
+      <div class="empty-icon">📋</div>
+      <p>No plans yet.</p>
+      <button type="button" class="link-btn" data-goto="1">Browse activities →</button>
     </div>
+  </section>
 
+</main>
+
+<!-- ============ ACTIVITY DETAIL MODAL ============ -->
+<div id="activity-modal" class="modal" hidden>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- ============ PRINT VIEW ============ -->
+<div id="print-root" class="print-only" aria-hidden="true"></div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ OFFLINE BANNER ============ -->
+<div id="offline-banner" class="offline-banner" hidden>
+  <span>You're offline. Changes will save locally and sync when you reconnect.</span>
 </div>
 
 <script src="script.js"></script>
