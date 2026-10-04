@@ -1,4 +1,4 @@
-
+// - FR-02 Save offline verified package, FR-04 Autosave 30s, FR-05 sync with status
 /* ---------- 1. Utilities ---------- */
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
