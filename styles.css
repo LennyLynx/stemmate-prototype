@@ -33,6 +33,8 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+[hidden] { display: none !important; }
+
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
 
@@ -568,6 +570,7 @@ fieldset.checks input[type="checkbox"] {
   z-index: 100;
   padding: 1rem;
 }
+.modal[hidden] { display: none; }
 .modal-backdrop {
   position: absolute; inset: 0;
   background: rgba(27,42,46,0.5);
@@ -658,6 +661,7 @@ fieldset.checks input[type="checkbox"] {
   z-index: 30;
   animation: slideDown 0.3s ease;
 }
+.offline-banner[hidden] { display: none; }
 @keyframes slideDown {
   from { transform: translateY(-100%); }
   to { transform: translateY(0); }
