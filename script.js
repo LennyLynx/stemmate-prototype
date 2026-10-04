@@ -1,12 +1,9 @@
-// 1. SETUP OUR DATA
 let isOffline = false;
 
-// Array to hold the user's saved plans
 let savedPlans = [
     { id: 1, title: "Previous Failed Session", status: "Failed Sync" }
 ];
 
-// Array holding all the available activities
 let activities = [
     { title: "Paper Bridge Challenge", level: "Beginner", duration: "45 min" },
     { title: "Vinegar & Baking Soda", level: "Beginner", duration: "30 min" },
@@ -14,6 +11,18 @@ let activities = [
     { title: "Pendulum Patterns", level: "Intermediate", duration: "45 min" },
     { title: "Advanced Robotics", level: "Advance", duration: "90 min" }
 ];
+
+// Helper function to show a friendly popup instead of annoying alerts
+function showToast(message) {
+    let toast = document.getElementById('toast-message');
+    toast.innerText = message;
+    toast.style.display = 'block';
+    
+    // Hide it again after 3 seconds
+    setTimeout(function() {
+        toast.style.display = 'none';
+    }, 3000);
+}
 
 // 2. NETWORK CONNECTION LOGIC
 function updateNetworkUI(offlineState) {
@@ -30,28 +39,18 @@ function updateNetworkUI(offlineState) {
         banner.innerHTML = "<strong>Online</strong><br><small>Tap here to test offline mode.</small>";
         statusText.innerText = "Online";
         
-        // If we just came back online, sync the plans
         syncPendingPlans(); 
     }
 }
 
-// Listen for actual PC Wi-Fi turning off and on
-window.addEventListener('offline', function() {
-    updateNetworkUI(true);
-});
-
-window.addEventListener('online', function() {
-    updateNetworkUI(false);
-});
-
-// Run this as soon as the page loads to check current Wi-Fi status
+window.addEventListener('offline', function() { updateNetworkUI(true); });
+window.addEventListener('online', function() { updateNetworkUI(false); });
 window.addEventListener('DOMContentLoaded', function() {
     if (navigator.onLine === false) {
         updateNetworkUI(true);
     }
 });
 
-// Allow the user to manually click the banner to test
 function toggleOfflineMode() {
     if (isOffline === true) {
         updateNetworkUI(false);
@@ -62,16 +61,13 @@ function toggleOfflineMode() {
 
 // 3. SCREEN NAVIGATION
 function showScreen(screenId) {
-    // First, hide all screens
     let allScreens = document.querySelectorAll('.screen');
     for (let i = 0; i < allScreens.length; i++) {
         allScreens[i].classList.remove('active-screen');
     }
     
-    // Then, show the one we clicked on
     document.getElementById(screenId).classList.add('active-screen');
     
-    // Refresh specific screens when we open them
     if (screenId === 'screen-activities') {
         filterActivities('All');
     }
@@ -83,9 +79,8 @@ function showScreen(screenId) {
 // 4. FILTERING ACTIVITIES
 function filterActivities(level) {
     let listElement = document.getElementById('activity-list');
-    listElement.innerHTML = ''; // Clear the list first
+    listElement.innerHTML = ''; 
     
-    // Highlight the button we clicked
     let buttons = document.querySelectorAll('.filter-btn');
     for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].innerText === level) {
@@ -95,17 +90,15 @@ function filterActivities(level) {
         }
     }
 
-    // Build the list of activities
     for (let i = 0; i < activities.length; i++) {
         let currentActivity = activities[i];
         
-        // If the level matches (or we want 'All'), show the activity
         if (level === 'All' || currentActivity.level === level) {
             listElement.innerHTML += `
                 <div class="card">
                     <strong>${currentActivity.title}</strong><br>
                     <small>${currentActivity.level} · ${currentActivity.duration}</small><br>
-                    <button class="btn btn-small" onclick="alert('Saved for offline use!')">Save Offline</button>
+                    <button class="btn btn-small" onclick="showToast('Saved ${currentActivity.title} to device!')">⬇️ Save for offline</button>
                 </div>
             `;
         }
@@ -116,12 +109,10 @@ function filterActivities(level) {
 function savePlan() {
     let titleInput = document.getElementById('plan-title').value;
     
-    // If they left it blank, give it a default name
     if (titleInput === "") {
         titleInput = "Untitled Plan";
     }
 
-    // Determine if it should be synced or pending
     let newStatus;
     if (isOffline === true) {
         newStatus = "Pending Sync";
@@ -129,7 +120,6 @@ function savePlan() {
         newStatus = "Synced";
     }
     
-    // Create the plan object and add it to our array
     let newPlan = {
         id: Date.now(),
         title: titleInput,
@@ -137,28 +127,18 @@ function savePlan() {
     };
     savedPlans.push(newPlan);
     
-    // Show success message
-    let msg = document.getElementById('save-status-msg');
-    msg.style.display = 'block';
-    
     if (isOffline === true) {
-        msg.innerText = "Saved locally. Will sync when online.";
+        showToast("Saved locally. Will sync when online.");
     } else {
-        msg.innerText = "Plan saved and synced!";
+        showToast("Plan saved and synced!");
     }
     
-    // Wait 1.5 seconds, then clear form and go to saved plans screen
-    setTimeout(function() {
-        msg.style.display = 'none';
-        
-        // Clear all text inputs
-        let inputs = document.querySelectorAll('#screen-create-plan input');
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].value = '';
-        }
-        
-        showScreen('screen-saved');
-    }, 1500);
+    // Clear form and change screen
+    let inputs = document.querySelectorAll('#screen-create-plan input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
+    }
+    showScreen('screen-saved');
 }
 
 // 6. SHOWING SAVED PLANS & SYNCING
@@ -168,14 +148,12 @@ function renderSavedPlans() {
     
     if (savedPlans.length === 0) {
         listElement.innerHTML = '<p style="text-align:center; color:#666;">No plans created yet.</p>';
-        return; // Stop the function here
+        return; 
     }
 
-    // Loop through all saved plans and display them
     for (let i = 0; i < savedPlans.length; i++) {
         let plan = savedPlans[i];
         
-        // Pick the right color class based on the status
         let badgeClass = 'status-pending';
         if (plan.status === 'Synced') {
             badgeClass = 'status-synced';
@@ -183,19 +161,17 @@ function renderSavedPlans() {
             badgeClass = 'status-failed';
         }
         
-        // Add special buttons if there is a conflict
         let extraHTML = '';
         if (plan.status === 'Failed Sync') {
             extraHTML = `
                 <div style="margin-top:10px;">
-                    <small style="color:red;">Conflict: Server has a newer version.</small><br>
-                    <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'server')">Use Server</button>
+                    <small style="color:red; font-weight:bold;">Conflict: Server has a newer version.</small><br>
+                    <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'server')" style="background-color: #2c3e50; color: white;">Use Server</button>
                     <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'local')">Keep Local</button>
                 </div>
             `;
         }
 
-        // Add the plan to the screen
         listElement.innerHTML += `
             <div class="card">
                 <strong>${plan.title}</strong><br>
@@ -206,30 +182,25 @@ function renderSavedPlans() {
     }
 }
 
-// Handle what happens when a user clicks a conflict button
 function resolveConflict(planId, choice) {
-    // Find the right plan in our array
     for (let i = 0; i < savedPlans.length; i++) {
         if (savedPlans[i].id === planId) {
             
-            savedPlans[i].status = 'Synced'; // Update status
+            savedPlans[i].status = 'Synced'; 
             
-            // Rename it so we know which one they picked
             if (choice === 'server') {
                 savedPlans[i].title = savedPlans[i].title + " (Server Version)";
             } else {
                 savedPlans[i].title = savedPlans[i].title + " (Local Version)";
             }
             
-            // Redraw the screen and show an alert
             renderSavedPlans();
-            alert("Conflict resolved using " + choice + " version.");
-            break; // Stop looking through the loop
+            showToast("Conflict resolved using " + choice + " version.");
+            break; 
         }
     }
 }
 
-// Automatically sync pending plans when the internet comes back
 function syncPendingPlans() {
     let syncedCount = 0;
     
@@ -240,9 +211,8 @@ function syncPendingPlans() {
         }
     }
     
-    // If we actually synced something, update the screen and tell the user
     if (syncedCount > 0) {
         renderSavedPlans();
-        alert(syncedCount + " plan(s) successfully synced to the server!");
+        showToast(syncedCount + " plan(s) successfully synced to the server!");
     }
 }

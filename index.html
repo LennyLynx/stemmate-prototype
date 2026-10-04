@@ -25,26 +25,28 @@
     <!-- 1. HOME SCREEN -->
     <div id="screen-home" class="content screen active-screen">
         <h2>Hello, Facilitator</h2>
+        <p class="subtitle">What would you like to do today?</p>
         
         <div class="card" onclick="showScreen('screen-activities')">
-            <strong>1. Browse activities</strong><br>
+            <strong>🔍 1. Browse activities</strong><br>
             <small>Filter and find STEM materials</small>
         </div>
         
         <div class="card" onclick="showScreen('screen-create-plan')">
-            <strong>2. Create a plan</strong><br>
+            <strong>📝 2. Create a plan</strong><br>
             <small>Draft session with safety/inclusion</small>
         </div>
         
         <div class="card" onclick="showScreen('screen-saved')">
-            <strong>3. View saved plans</strong><br>
+            <strong>📁 3. View saved plans</strong><br>
             <small>Check offline sync status & conflicts</small>
         </div>
     </div>
 
     <!-- 2. BROWSE ACTIVITIES SCREEN -->
     <div id="screen-activities" class="content screen">
-        <h3>Activities</h3>
+        <h2>Activities</h2>
+        <p class="subtitle">Find a lesson for your next class.</p>
         
         <div class="filter-bar">
             <button class="filter-btn active" onclick="filterActivities('All')">All</button>
@@ -60,41 +62,64 @@
 
     <!-- 3. CREATE PLAN SCREEN -->
     <div id="screen-create-plan" class="content screen">
-        <h3>New Session Plan</h3>
-        <p style="font-size: 12px; color: #666;">Autosaves every 30s.</p>
+        <h2>New Session Plan</h2>
+        <p class="subtitle" style="color: #666;">Autosaves every 30 seconds.</p>
         
-        <input type="text" id="plan-title" placeholder="Session Title (e.g., Paper Bridge)">
-        <input type="text" id="plan-steps" placeholder="1. Session Steps">
-        <input type="text" id="plan-timing" placeholder="2. Timing/Duration">
-        <input type="text" id="plan-materials" placeholder="3. Required Materials">
-        <input type="text" id="plan-safety" placeholder="4. Health & Safety Prompts">
-        <input type="text" id="plan-inclusion" placeholder="5. Inclusion Prompts">
+        <div class="form-group">
+            <label for="plan-title">1. Session Title</label>
+            <input type="text" id="plan-title" placeholder="e.g., Paper Bridge">
+        </div>
+
+        <div class="form-group">
+            <label for="plan-steps">2. Session Steps</label>
+            <input type="text" id="plan-steps" placeholder="List the main steps">
+        </div>
+
+        <div class="form-group">
+            <label for="plan-timing">3. Timing/Duration</label>
+            <input type="text" id="plan-timing" placeholder="e.g., 45 minutes">
+        </div>
+
+        <div class="form-group">
+            <label for="plan-materials">4. Required Materials</label>
+            <input type="text" id="plan-materials" placeholder="List needed supplies">
+        </div>
+
+        <div class="form-group">
+            <label for="plan-safety">5. Health & Safety</label>
+            <input type="text" id="plan-safety" placeholder="Safety prompts">
+        </div>
+
+        <div class="form-group">
+            <label for="plan-inclusion">6. Inclusion Prompts</label>
+            <input type="text" id="plan-inclusion" placeholder="How to include everyone">
+        </div>
         
-        <button class="btn" onclick="savePlan()">Save Plan</button>
-        
-        <p id="save-status-msg" style="color: green; display: none; text-align: center; margin-top: 10px;">
-            Plan saved!
-        </p>
+        <button class="btn btn-primary" onclick="savePlan()">Save Plan</button>
     </div>
 
     <!-- 4. SAVED PLANS SCREEN -->
     <div id="screen-saved" class="content screen">
-        <h3>My Plans</h3>
+        <h2>My Plans</h2>
+        <p class="subtitle">Manage your drafted and synced sessions.</p>
+        
         <div id="saved-plans-list">
             <!-- JavaScript will put the saved plans here -->
         </div>
     </div>
 
+    <!-- Friendly Toast Notification (Hidden by default) -->
+    <div id="toast-message" class="toast">Action successful!</div>
+
     <!-- Bottom Navigation Bar -->
     <div class="nav-bar" id="bottom-nav">
-        <button class="nav-btn" onclick="showScreen('screen-home')">Home</button>
-        <button class="nav-btn" onclick="showScreen('screen-activities')">Activities</button>
-        <button class="nav-btn" onclick="showScreen('screen-saved')">Plans</button>
+        <button class="nav-btn" onclick="showScreen('screen-home')">🏠<br>Home</button>
+        <button class="nav-btn" onclick="showScreen('screen-activities')">🔍<br>Activities</button>
+        <button class="nav-btn" onclick="showScreen('screen-saved')">📁<br>Plans</button>
     </div>
 
 </div>
 
-<!-- Link to our JavaScript file -->
 <script src="script.js"></script>
 </body>
 </html>
