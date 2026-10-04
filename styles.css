@@ -33,7 +33,6 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-[hidden] { display: none !important; }
 
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
@@ -564,6 +563,7 @@ fieldset.checks input[type="checkbox"] {
 .empty-state p { margin: 0 0 0.75rem; }
 
 /* ============= MODAL ============= */
+[hidden] { display: none !important; }
 .modal {
   position: fixed; inset: 0;
   display: grid; place-items: center;
