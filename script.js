@@ -1,7 +1,7 @@
 let isOffline = false;
 
 let savedPlans = [
-    { id: 1, title: "Previous Failed Session", status: "Failed Sync" }
+    { id: 1, title: "Previous Session", status: "Failed Sync" }
 ];
 
 let activities = [
@@ -12,7 +12,7 @@ let activities = [
     { title: "Advanced Robotics", level: "Advance", duration: "90 min" }
 ];
 
-// Helper function to show a friendly popup instead of annoying alerts
+// Show a simple pop-up message at the bottom of the screen
 function showToast(message) {
     let toast = document.getElementById('toast-message');
     toast.innerText = message;
@@ -24,7 +24,7 @@ function showToast(message) {
     }, 3000);
 }
 
-// 2. NETWORK CONNECTION LOGIC
+// NETWORK CONNECTION LOGIC
 function updateNetworkUI(offlineState) {
     isOffline = offlineState;
     let banner = document.getElementById('offline-banner');
@@ -32,11 +32,11 @@ function updateNetworkUI(offlineState) {
     
     if (isOffline === true) {
         banner.classList.add('is-offline');
-        banner.innerHTML = "<strong>Offline</strong><br><small>Data will sync when connected.</small>";
+        banner.innerHTML = "<strong>Offline</strong><br><small>We will save your work to the phone.</small>";
         statusText.innerText = "Offline";
     } else {
         banner.classList.remove('is-offline');
-        banner.innerHTML = "<strong>Online</strong><br><small>Tap here to test offline mode.</small>";
+        banner.innerHTML = "<strong>Online</strong><br><small>Tap here to turn off internet.</small>";
         statusText.innerText = "Online";
         
         syncPendingPlans(); 
@@ -59,7 +59,7 @@ function toggleOfflineMode() {
     }
 }
 
-// 3. SCREEN NAVIGATION
+// SCREEN NAVIGATION
 function showScreen(screenId) {
     let allScreens = document.querySelectorAll('.screen');
     for (let i = 0; i < allScreens.length; i++) {
@@ -76,7 +76,7 @@ function showScreen(screenId) {
     }
 }
 
-// 4. FILTERING ACTIVITIES
+// FILTERING ACTIVITIES
 function filterActivities(level) {
     let listElement = document.getElementById('activity-list');
     listElement.innerHTML = ''; 
@@ -98,14 +98,14 @@ function filterActivities(level) {
                 <div class="card">
                     <strong>${currentActivity.title}</strong><br>
                     <small>${currentActivity.level} · ${currentActivity.duration}</small><br>
-                    <button class="btn btn-small" onclick="showToast('Saved ${currentActivity.title} to device!')">⬇️ Save for offline</button>
+                    <button class="btn btn-small" onclick="showToast('Saved to phone!')">Save to phone</button>
                 </div>
             `;
         }
     }
 }
 
-// 5. SAVING A PLAN
+// SAVING A PLAN
 function savePlan() {
     let titleInput = document.getElementById('plan-title').value;
     
@@ -128,9 +128,9 @@ function savePlan() {
     savedPlans.push(newPlan);
     
     if (isOffline === true) {
-        showToast("Saved locally. Will sync when online.");
+        showToast("Saved to phone. Will upload later.");
     } else {
-        showToast("Plan saved and synced!");
+        showToast("Plan saved and uploaded!");
     }
     
     // Clear form and change screen
@@ -141,7 +141,7 @@ function savePlan() {
     showScreen('screen-saved');
 }
 
-// 6. SHOWING SAVED PLANS & SYNCING
+// SHOWING SAVED PLANS & SYNCING
 function renderSavedPlans() {
     let listElement = document.getElementById('saved-plans-list');
     listElement.innerHTML = '';
@@ -165,9 +165,9 @@ function renderSavedPlans() {
         if (plan.status === 'Failed Sync') {
             extraHTML = `
                 <div style="margin-top:10px;">
-                    <small style="color:red; font-weight:bold;">Conflict: Server has a newer version.</small><br>
-                    <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'server')" style="background-color: #2c3e50; color: white;">Use Server</button>
-                    <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'local')">Keep Local</button>
+                    <small style="color:red; font-weight:bold;">Wait: There is a newer version online.</small><br>
+                    <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'server')" style="background-color: #2c3e50; color: white;">Keep Online Version</button>
+                    <button class="btn btn-small" onclick="resolveConflict(${plan.id}, 'local')">Keep My Phone Version</button>
                 </div>
             `;
         }
@@ -189,13 +189,13 @@ function resolveConflict(planId, choice) {
             savedPlans[i].status = 'Synced'; 
             
             if (choice === 'server') {
-                savedPlans[i].title = savedPlans[i].title + " (Server Version)";
+                savedPlans[i].title = savedPlans[i].title + " (Online Version)";
             } else {
-                savedPlans[i].title = savedPlans[i].title + " (Local Version)";
+                savedPlans[i].title = savedPlans[i].title + " (Phone Version)";
             }
             
             renderSavedPlans();
-            showToast("Conflict resolved using " + choice + " version.");
+            showToast("Fixed! We saved the " + choice + " version.");
             break; 
         }
     }
@@ -213,6 +213,6 @@ function syncPendingPlans() {
     
     if (syncedCount > 0) {
         renderSavedPlans();
-        showToast(syncedCount + " plan(s) successfully synced to the server!");
+        showToast(syncedCount + " plan(s) uploaded successfully!");
     }
 }

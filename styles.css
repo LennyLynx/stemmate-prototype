@@ -119,7 +119,7 @@ input {
     display: flex;
     justify-content: space-around;
     background-color: #fff;
-    padding: 10px 0;
+    padding: 15px 0;
     border-top: 1px solid #ddd;
 }
 .nav-btn {
@@ -127,11 +127,12 @@ input {
     border: none;
     color: #555;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: bold;
     flex: 1;
     padding: 8px;
 }
-.nav-btn:hover, .nav-btn:focus { color: #0056b3; font-weight: bold; }
+.nav-btn:hover, .nav-btn:focus { color: #0056b3; }
 
 /* Activity Filters */
 .filter-bar {

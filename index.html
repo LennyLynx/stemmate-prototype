@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEMMate Namibia Prototype</title>
+    <title>STEMMate Namibia</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,34 +19,34 @@
     <!-- Clickable Offline Banner -->
     <div id="offline-banner" onclick="toggleOfflineMode()">
         <strong>Online</strong><br>
-        <small>Tap here to test offline mode.</small>
+        <small>Tap here to turn off internet.</small>
     </div>
 
     <!-- 1. HOME SCREEN -->
     <div id="screen-home" class="content screen active-screen">
-        <h2>Hello, Facilitator</h2>
-        <p class="subtitle">What would you like to do today?</p>
+        <h2>Hello, Teacher</h2>
+        <p class="subtitle">What do you want to do today?</p>
         
         <div class="card" onclick="showScreen('screen-activities')">
-            <strong>🔍 1. Browse activities</strong><br>
-            <small>Filter and find STEM materials</small>
+            <strong>1. Browse activities</strong><br>
+            <small>Find a lesson for your class</small>
         </div>
         
         <div class="card" onclick="showScreen('screen-create-plan')">
-            <strong>📝 2. Create a plan</strong><br>
-            <small>Draft session with safety/inclusion</small>
+            <strong>2. Create a plan</strong><br>
+            <small>Start a new lesson plan</small>
         </div>
         
         <div class="card" onclick="showScreen('screen-saved')">
-            <strong>📁 3. View saved plans</strong><br>
-            <small>Check offline sync status & conflicts</small>
+            <strong>3. View saved plans</strong><br>
+            <small>See your saved work</small>
         </div>
     </div>
 
     <!-- 2. BROWSE ACTIVITIES SCREEN -->
     <div id="screen-activities" class="content screen">
         <h2>Activities</h2>
-        <p class="subtitle">Find a lesson for your next class.</p>
+        <p class="subtitle">Pick a lesson to teach.</p>
         
         <div class="filter-bar">
             <button class="filter-btn active" onclick="filterActivities('All')">All</button>
@@ -62,37 +62,37 @@
 
     <!-- 3. CREATE PLAN SCREEN -->
     <div id="screen-create-plan" class="content screen">
-        <h2>New Session Plan</h2>
-        <p class="subtitle" style="color: #666;">Autosaves every 30 seconds.</p>
+        <h2>New Lesson Plan</h2>
+        <p class="subtitle" style="color: #666;">This saves automatically.</p>
         
         <div class="form-group">
-            <label for="plan-title">1. Session Title</label>
-            <input type="text" id="plan-title" placeholder="e.g., Paper Bridge">
+            <label for="plan-title">1. Title</label>
+            <input type="text" id="plan-title" placeholder="Name of the lesson">
         </div>
 
         <div class="form-group">
-            <label for="plan-steps">2. Session Steps</label>
-            <input type="text" id="plan-steps" placeholder="List the main steps">
+            <label for="plan-steps">2. Steps</label>
+            <input type="text" id="plan-steps" placeholder="What will the students do?">
         </div>
 
         <div class="form-group">
-            <label for="plan-timing">3. Timing/Duration</label>
-            <input type="text" id="plan-timing" placeholder="e.g., 45 minutes">
+            <label for="plan-timing">3. Time Needed</label>
+            <input type="text" id="plan-timing" placeholder="How many minutes?">
         </div>
 
         <div class="form-group">
-            <label for="plan-materials">4. Required Materials</label>
-            <input type="text" id="plan-materials" placeholder="List needed supplies">
+            <label for="plan-materials">4. Materials</label>
+            <input type="text" id="plan-materials" placeholder="What items do you need?">
         </div>
 
         <div class="form-group">
-            <label for="plan-safety">5. Health & Safety</label>
-            <input type="text" id="plan-safety" placeholder="Safety prompts">
+            <label for="plan-safety">5. Safety</label>
+            <input type="text" id="plan-safety" placeholder="Any safety rules?">
         </div>
 
         <div class="form-group">
-            <label for="plan-inclusion">6. Inclusion Prompts</label>
-            <input type="text" id="plan-inclusion" placeholder="How to include everyone">
+            <label for="plan-inclusion">6. Inclusion</label>
+            <input type="text" id="plan-inclusion" placeholder="How to include all students">
         </div>
         
         <button class="btn btn-primary" onclick="savePlan()">Save Plan</button>
@@ -101,7 +101,7 @@
     <!-- 4. SAVED PLANS SCREEN -->
     <div id="screen-saved" class="content screen">
         <h2>My Plans</h2>
-        <p class="subtitle">Manage your drafted and synced sessions.</p>
+        <p class="subtitle">Check if your plans are uploaded.</p>
         
         <div id="saved-plans-list">
             <!-- JavaScript will put the saved plans here -->
@@ -113,9 +113,9 @@
 
     <!-- Bottom Navigation Bar -->
     <div class="nav-bar" id="bottom-nav">
-        <button class="nav-btn" onclick="showScreen('screen-home')">🏠<br>Home</button>
-        <button class="nav-btn" onclick="showScreen('screen-activities')">🔍<br>Activities</button>
-        <button class="nav-btn" onclick="showScreen('screen-saved')">📁<br>Plans</button>
+        <button class="nav-btn" onclick="showScreen('screen-home')">Home</button>
+        <button class="nav-btn" onclick="showScreen('screen-activities')">Activities</button>
+        <button class="nav-btn" onclick="showScreen('screen-saved')">Plans</button>
     </div>
 
 </div>
