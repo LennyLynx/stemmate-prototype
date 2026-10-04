@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+.phone-frame {
+    width: 360px;
+    height: 640px;
+    background-color: #f9f9f9;
+    border: 2px solid #333;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+#offline-banner {
+    background-color: #88d49e;
+    color: #111;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #4caf50;
+    text-align: center;
+}
+
+.is-offline {
+    background-color: #ffcccc !important;
+    border-bottom-color: #ff0000 !important;
+}
+
+.content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.screen { display: none; }
+.active-screen { display: block; }
+
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-small {
+    padding: 8px;
+    background-color: #555;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 12px;
+    border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    overflow-x: auto;
+}
+
+.filter-btn {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    background: transparent;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #333;
+    color: white;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    margin-top: 5px;
+}
+.status-synced { background: #d4edda; color: #155724; }
+.status-pending { background: #fff3cd; color: #856404; }
+.status-failed { background: #f8d7da; color: #721c24; }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEMMate Namibia Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="phone-frame">
+    <div class="header">
+        <span>STEMMate Namibia</span>
+        <span id="network-status-text">Online</span>
+    </div>
+    
+    <!-- Universal Offline Banner -->
+    <div id="offline-banner" onclick="toggleOfflineMode()">
+        <strong>Online</strong><br>
+        <small>Tap here to test offline mode.</small>
+    </div>
+
+    <!-- Home Screen -->
+    <div id="screen-home" class="content screen active-screen">
+        <h2>Hello, Facilitator</h2>
+        <div class="card" onclick="showScreen('screen-activities')">
+            <strong>1. Browse activities</strong><br><small>Filter and find STEM materials</small>
+        </div>
+        <div class="card" onclick="showScreen('screen-create-plan')">
+            <strong>2. Create a plan</strong><br><small>Draft session with safety/inclusion</small>
+        </div>
+        <div class="card" onclick="showScreen('screen-saved')">
+            <strong>3. View saved plans</strong><br><small>Check offline sync status & conflicts</small>
+        </div>
+    </div>
+
+    <!-- Browse Activities Screen[cite: 13, 18] -->
+    <div id="screen-activities" class="content screen">
+        <h3>Activities</h3>
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterActivities('All')">All</button>
+            <button class="filter-btn" onclick="filterActivities('Beginner')">Beginner</button>
+            <button class="filter-btn" onclick="filterActivities('Intermediate')">Intermediate</button>
+            <button class="filter-btn" onclick="filterActivities('Advance')">Advance</button>
+        </div>
+        <div id="activity-list">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Create Plan Screen[cite: 14, 18] -->
+    <div id="screen-create-plan" class="content screen">
+        <h3>New Session Plan</h3>
+        <p style="font-size: 12px; color: #666;">Autosaves every 30s.</p>
+        <input type="text" id="plan-title" placeholder="Session Title (e.g., Paper Bridge)">
+        <input type="text" id="plan-steps" placeholder="1. Session Steps">
+        <input type="text" id="plan-timing" placeholder="2. Timing/Duration">
+        <input type="text" id="plan-materials" placeholder="3. Required Materials">
+        <input type="text" id="plan-safety" placeholder="4. Health & Safety Prompts">
+        <input type="text" id="plan-inclusion" placeholder="5. Inclusion Prompts">
+        <button class="btn" onclick="savePlan()">Save Plan</button>
+        <p id="save-status-msg" style="color: green; display: none; font-size: 14px; text-align: center; margin-top: 10px;">Plan saved!</p>
+    </div>
+
+    <!-- Saved Plans (Sync) Screen[cite: 14, 18] -->
+    <div id="screen-saved" class="content screen">
+        <h3>My Plans</h3>
+        <div id="saved-plans-list">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="nav-bar" id="bottom-nav">
+        <button class="nav-btn" onclick="showScreen('screen-home')">Home</button>
+        <button class="nav-btn" onclick="showScreen('screen-activities')">Activities</button>
+        <button class="nav-btn" onclick="showScreen('screen-saved')">Plans</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
