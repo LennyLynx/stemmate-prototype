@@ -6,11 +6,22 @@
     "age": "8-12",
     "duration": 60,
     "languages": ["EN", "AF"],
-    "materials": ["Plastic bottle", "Sand", "Gravel", "Cotton wool", "Dirty water", "Scissors"],
-    "summary": "Learners build a layered filter and compare water clarity before and after.",
-    "safety": "Do not drink the filtered water — it is a demonstration only. Supervise scissor use.",
+    "materials": [
+      "Plastic bottle",
+      "Sand",
+      "Gravel",
+      "Cotton wool",
+      "Dirty water",
+      "Scissors"
+    ],
+    "summary": "Learners build a layered filter and compare water clarity before and after filtration.",
+    "safety": "Do not drink the filtered water — it is for demonstration only. Supervise the use of scissors.",
     "inclusion": "Pairs work well. Provide visual instruction cards for mixed reading levels.",
-    "learningGoals": ["Understand filtration", "Compare variables", "Record observations"]
+    "learningGoals": [
+      "Understand filtration",
+      "Compare variables",
+      "Record observations"
+    ]
   },
   {
     "id": "paper-bridge",
@@ -19,11 +30,19 @@
     "age": "8-14",
     "duration": 45,
     "languages": ["EN", "AF"],
-    "materials": ["A4 paper", "Tape", "Coins or small weights"],
+    "materials": [
+      "A4 paper",
+      "Tape",
+      "Coins or small weights"
+    ],
     "summary": "Teams design a bridge from a single sheet of paper that holds as much weight as possible.",
     "safety": "No sharp tools. Keep the floor clear of trip hazards.",
-    "inclusion": "Teams of 3-4 with mixed abilities. Rotate the designer role each round.",
-    "learningGoals": ["Forces and structures", "Iterative design", "Team communication"]
+    "inclusion": "Teams of 3–4 with mixed abilities. Rotate the designer role each round.",
+    "learningGoals": [
+      "Forces and structures",
+      "Iterative design",
+      "Team communication"
+    ]
   },
   {
     "id": "solar-oven",
@@ -32,11 +51,22 @@
     "age": "10-15",
     "duration": 90,
     "languages": ["EN"],
-    "materials": ["Pizza box", "Aluminium foil", "Cling wrap", "Black paper", "Skewer", "Tape"],
+    "materials": [
+      "Pizza box",
+      "Aluminium foil",
+      "Cling wrap",
+      "Black paper",
+      "Skewer",
+      "Tape"
+    ],
     "summary": "Build a box oven that uses the sun to melt chocolate or warm a small snack.",
-    "safety": "Adult supervision required. Surfaces get hot — use tongs. Work outdoors or near a window.",
-    "inclusion": "Outdoor activity — ensure shade breaks and water are available.",
-    "learningGoals": ["Solar energy", "Heat transfer", "Measuring temperature"]
+    "safety": "Adult supervision is required. Surfaces can get hot — use tongs. Work outdoors or near a window.",
+    "inclusion": "For outdoor activities, ensure shade breaks and water are available.",
+    "learningGoals": [
+      "Solar energy",
+      "Heat transfer",
+      "Measuring temperature"
+    ]
   },
   {
     "id": "binary-name",
@@ -45,11 +75,18 @@
     "age": "7-12",
     "duration": 30,
     "languages": ["EN", "AF"],
-    "materials": ["Two colours of beads", "String or elastic"],
+    "materials": [
+      "Two colours of beads",
+      "String or elastic"
+    ],
     "summary": "Learners encode their initials in binary using two bead colours.",
-    "safety": "Choking hazard — not suitable for children under 5.",
-    "inclusion": "Works well with mixed reading levels; purely visual.",
-    "learningGoals": ["Binary numbers", "Pattern recognition", "Letter-to-number mapping"]
+    "safety": "Beads are a choking hazard — not suitable for children under 5.",
+    "inclusion": "Works well with mixed reading levels and is primarily visual.",
+    "learningGoals": [
+      "Binary numbers",
+      "Pattern recognition",
+      "Letter-to-number mapping"
+    ]
   },
   {
     "id": "wind-turbine",
@@ -58,11 +95,22 @@
     "age": "10-16",
     "duration": 75,
     "languages": ["EN"],
-    "materials": ["Card", "Skewer", "Bottle cap", "Small fan", "String", "Washer"],
+    "materials": [
+      "Card",
+      "Skewer",
+      "Bottle cap",
+      "Small fan",
+      "String",
+      "Washer"
+    ],
     "summary": "Learners build a turbine and test how blade shape affects the load it can lift.",
     "safety": "Keep fingers clear of the fan. Do not use a high-speed fan.",
-    "inclusion": "Rotate roles so every learner builds a blade.",
-    "learningGoals": ["Energy conversion", "Blade design", "Fair testing"]
+    "inclusion": "Rotate roles so every learner has a chance to build a blade.",
+    "learningGoals": [
+      "Energy conversion",
+      "Blade design",
+      "Fair testing"
+    ]
   },
   {
     "id": "acid-base",
@@ -71,11 +119,22 @@
     "age": "9-14",
     "duration": 45,
     "languages": ["EN", "AF"],
-    "materials": ["Red cabbage", "Hot water", "Clear cups", "Lemon juice", "Soap", "Vinegar"],
+    "materials": [
+      "Red cabbage",
+      "Hot water",
+      "Clear cups",
+      "Lemon juice",
+      "Soap",
+      "Vinegar"
+    ],
     "summary": "Use red cabbage water as a natural pH indicator to test household liquids.",
-    "safety": "Not for tasting. Wash hands after the activity.",
-    "inclusion": "Uses low-cost, home-available materials — good for no-budget contexts.",
-    "learningGoals": ["Acids and bases", "Indicators", "Observation tables"]
+    "safety": "Do not taste any of the materials. Wash hands after the activity.",
+    "inclusion": "Uses low-cost, commonly available materials, making it suitable for low-budget contexts.",
+    "learningGoals": [
+      "Acids and bases",
+      "Indicators",
+      "Observation tables"
+    ]
   },
   {
     "id": "parachute",
@@ -84,24 +143,43 @@
     "age": "9-14",
     "duration": 60,
     "languages": ["EN"],
-    "materials": ["Plastic bag", "String", "Tape", "Small weight (or egg)", "Paper clip"],
+    "materials": [
+      "Plastic bag",
+      "String",
+      "Tape",
+      "Small weight or egg",
+      "Paper clip"
+    ],
     "summary": "Design a parachute that slows a falling weight as much as possible.",
     "safety": "If using real eggs, work outside or over a tray. Do not drop from a height above 2 m.",
     "inclusion": "Encourage sketches before building for learners who prefer planning.",
-    "learningGoals": ["Air resistance", "Surface area", "Test and refine"]
+    "learningGoals": [
+      "Air resistance",
+      "Surface area",
+      "Test and refine"
+    ]
   },
   {
-    "id": "water-rocket",
+    "id": "balloon-rocket",
     "title": "Balloon rocket",
     "subject": "Science",
     "age": "6-11",
     "duration": 30,
     "languages": ["EN", "AF"],
-    "materials": ["Balloon", "String", "Straw", "Tape"],
-    "summary": "Thread a straw on a string and propel a balloon along it to show thrust.",
+    "materials": [
+      "Balloon",
+      "String",
+      "Straw",
+      "Tape"
+    ],
+    "summary": "Thread a straw onto a string and propel a balloon along it to demonstrate thrust.",
     "safety": "Balloon pieces are a choking hazard — supervise closely.",
-    "inclusion": "Simple, high-energy activity that works for large groups.",
-    "learningGoals": ["Thrust", "Action and reaction", "Measuring distance"]
+    "inclusion": "A simple, high-energy activity that works well for large groups.",
+    "learningGoals": [
+      "Thrust",
+      "Action and reaction",
+      "Measuring distance"
+    ]
   },
   {
     "id": "dna-model",
@@ -110,11 +188,19 @@
     "age": "11-16",
     "duration": 60,
     "languages": ["EN"],
-    "materials": ["Liquorice", "Marshmallows (4 colours)", "Toothpicks"],
-    "summary": "Build a double-helix model from sweets to represent base pairing.",
-    "safety": "Check for food allergies before starting. Wash hands.",
-    "inclusion": "Offer a non-edible alternative (beads + wire) for dietary or allergy needs.",
-    "learningGoals": ["DNA structure", "Base pairing", "3D modelling"]
+    "materials": [
+      "Liquorice",
+      "Marshmallows (4 colours)",
+      "Toothpicks"
+    ],
+    "summary": "Build a double-helix model from sweets to represent DNA base pairing.",
+    "safety": "Check for food allergies before starting. Wash hands before handling food.",
+    "inclusion": "Offer a non-edible alternative, such as beads and wire, for learners with dietary restrictions or allergies.",
+    "learningGoals": [
+      "DNA structure",
+      "Base pairing",
+      "3D modelling"
+    ]
   },
   {
     "id": "bridge-suspension",
@@ -123,11 +209,21 @@
     "age": "12-17",
     "duration": 90,
     "languages": ["EN"],
-    "materials": ["Card", "String", "Straws", "Tape", "Small weights"],
+    "materials": [
+      "Card",
+      "String",
+      "Straws",
+      "Tape",
+      "Small weights"
+    ],
     "summary": "Build a suspension bridge and test how much weight it can carry.",
     "safety": "Tape down sharp edges. Keep the testing area clear.",
-    "inclusion": "Split into specialised roles: designer, builder, tester, recorder.",
-    "learningGoals": ["Tension and compression", "Forces in structures", "Scale drawings"]
+    "inclusion": "Split learners into specialised roles: designer, builder, tester, and recorder.",
+    "learningGoals": [
+      "Tension and compression",
+      "Forces in structures",
+      "Scale drawings"
+    ]
   },
   {
     "id": "cipher",
@@ -136,11 +232,19 @@
     "age": "9-14",
     "duration": 40,
     "languages": ["EN", "AF"],
-    "materials": ["Printed cipher wheel template", "Scissors", "Split pin"],
+    "materials": [
+      "Printed cipher wheel template",
+      "Scissors",
+      "Split pin"
+    ],
     "summary": "Make a rotating cipher wheel and exchange secret messages.",
-    "safety": "Supervise scissor use.",
-    "inclusion": "Non-verbal learners can participate fully by decoding.",
-    "learningGoals": ["Patterns and shifts", "Cryptography basics", "Writing for a purpose"]
+    "safety": "Supervise the use of scissors.",
+    "inclusion": "Non-verbal learners can participate fully by decoding messages.",
+    "learningGoals": [
+      "Patterns and shifts",
+      "Cryptography basics",
+      "Writing for a purpose"
+    ]
   },
   {
     "id": "insulation",
@@ -149,10 +253,19 @@
     "age": "10-15",
     "duration": 60,
     "languages": ["EN"],
-    "materials": ["Identical bottles", "Insulation materials (wool, foil, newspaper, cloth)", "Thermometers", "Ice water"],
-    "summary": "Wrap bottles in different materials and measure which keeps water coldest.",
+    "materials": [
+      "Identical bottles",
+      "Insulation materials (wool, foil, newspaper, cloth)",
+      "Thermometers",
+      "Ice water"
+    ],
+    "summary": "Wrap bottles in different materials and measure which material keeps the water coldest.",
     "safety": "Wipe up spills. Glass bottles should be handled by an adult.",
     "inclusion": "Compare results on a shared class chart so non-writers can contribute.",
-    "learningGoals": ["Heat transfer", "Fair testing", "Graphing results"]
+    "learningGoals": [
+      "Heat transfer",
+      "Fair testing",
+      "Graphing results"
+    ]
   }
 ]

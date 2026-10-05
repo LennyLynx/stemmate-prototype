@@ -667,6 +667,67 @@ fieldset.checks input[type="checkbox"] {
   to { transform: translateY(0); }
 }
 
+/* ============= UI POLISH / RESPONSIVE ============= */
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0.85rem 1rem;
+  }
+
+  .tagline {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 0.35rem;
+  }
+
+  .progress {
+    top: 64px;
+    padding: 0.75rem 0.85rem 0.6rem;
+  }
+
+  .step {
+    padding: 0.4rem;
+    justify-content: center;
+  }
+
+  .step span:not(.step-num) {
+    display: none;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .panel-head {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .activity-card {
+    padding: 0.9rem;
+  }
+
+  .plan-card {
+    padding: 0.9rem;
+  }
+
+  .sync-summary {
+    gap: 0.45rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ============= PRINT ============= */
 .print-only { display: none; }
 @media print {
