@@ -25,6 +25,8 @@ function showToast(message) {
 }
 
 // NETWORK CONNECTION LOGIC
+let manualOverride = false; // This tells the computer if you clicked the button
+
 function updateNetworkUI(offlineState) {
     isOffline = offlineState;
     let banner = document.getElementById('offline-banner');
@@ -43,23 +45,32 @@ function updateNetworkUI(offlineState) {
     }
 }
 
-window.addEventListener('offline', function() { updateNetworkUI(true); });
-window.addEventListener('online', function() { updateNetworkUI(false); });
-window.addEventListener('DOMContentLoaded', function() {
-    if (navigator.onLine === false) {
-        updateNetworkUI(true);
+// 1. Automatic Timer (Checks every 1 second)
+setInterval(function() {
+    // Only check automatically if the user HAS NOT manually clicked the banner
+    if (manualOverride === false) {
+        if (navigator.onLine === false && isOffline === false) {
+            updateNetworkUI(true); // Wi-Fi turned off
+        } else if (navigator.onLine === true && isOffline === true) {
+            updateNetworkUI(false); // Wi-Fi turned back on
+        }
     }
-});
+}, 1000);
 
+// 2. Manual toggle for your video demonstration
 function toggleOfflineMode() {
     if (isOffline === true) {
+        // Turn internet back on, and let the automatic timer start working again
+        manualOverride = false;
         updateNetworkUI(false);
     } else {
+        // Force internet off, and tell the automatic timer to stop interfering
+        manualOverride = true;
         updateNetworkUI(true);
     }
 }
 
-// SCREEN NAVIGATION
+// SCREEN NAVIGATION (This is the part that was missing!)
 function showScreen(screenId) {
     let allScreens = document.querySelectorAll('.screen');
     for (let i = 0; i < allScreens.length; i++) {
