@@ -1,0 +1,9 @@
+{
+  "_note": "Starter catalogue: the four activities that were hard-coded in the prototype interface. Replace this file with the team repository's activities.json (12 activities). Each entry needs at least id and title; other fields are passed through unchanged.",
+  "activities": [
+    {"id": 1, "title": "Paper Bridge Challenge", "level": "Beginner", "duration": "30 min", "desc": "Build strong bridges with paper"},
+    {"id": 2, "title": "Vinegar & Baking Soda", "level": "Beginner", "duration": "45 min", "desc": "Fun chemistry eruption"},
+    {"id": 3, "title": "Pendulum Patterns", "level": "Intermediate", "duration": "90 min", "desc": "Art with physics"},
+    {"id": 4, "title": "Advanced Robotics", "level": "Advanced", "duration": "90 min", "desc": "Code a simple bot"}
+  ]
+}
